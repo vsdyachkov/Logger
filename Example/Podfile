@@ -1,0 +1,6 @@
+
+target 'Logger', :exclusive => true do
+  pod "Logger", :path => "../"
+
+  pod 'Kiwi'
+end
