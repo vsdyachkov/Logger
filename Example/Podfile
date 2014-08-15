@@ -1,6 +1,7 @@
 
 target 'Logger', :exclusive => true do
   pod "Logger", :path => "../"
+  pod "FlurrySDK"
 
-  pod 'Kiwi'
+
 end
