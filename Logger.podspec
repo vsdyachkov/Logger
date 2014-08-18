@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Logger"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "Multiple logger to console, flurry and alert (optional)"
   s.description      = <<-DESC
                         This pod log messages to console, flurry and alert (optional)
