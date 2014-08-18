@@ -14,10 +14,10 @@ All actions can be optional and are simply adjusted.
 
 1) Initialize module with:
 
-     initWithEnableLoging: (BOOL) enableFlag
-          globalDebugDict: (NSDictionary*) debugDictionary
-            flurrySession: (NSString*) sessionSting
-             flurryUserID: (NSString*) userString;
+      initWithEnableLoging: (BOOL) enableFlag
+           globalDebugDict: (NSDictionary*) debugDictionary
+             flurrySession: (NSString*) sessionSting
+              flurryUserID: (NSString*) userString;
 
 
 + If you don't want any logs in console and flurry, use initWithEnableLoging: NO
@@ -33,7 +33,6 @@ All actions can be optional and are simply adjusted.
                debugString: (NSString*) hiddenString 
                      alert: (BOOL) isAlert
 
-
        logSuccessWithTitle: (NSString*) title 
                    message: (NSString*) message 
                  debugDict: (NSDictionary*) debugDict 
@@ -44,7 +43,6 @@ All actions can be optional and are simply adjusted.
                    message: (NSString*) message 
                debugString: (NSString*) hiddenString 
                      alert: (BOOL) isAlert
-
 
          logErrorWithTitle: (NSString*) title 
                    message: (NSString*) message 
