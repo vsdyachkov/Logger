@@ -14,9 +14,9 @@ All actions can be optional and are simply adjusted.
 
 1) Initialize module with:
 
-Init
 
-2) Use logSuccess or logError selector with debug information in NSString or NSDictionary at each important event.
+
+2) At each important event, use logSuccess or logError selector with debug information in NSString or NSDictionary 
 
 
 
