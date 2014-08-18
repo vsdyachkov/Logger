@@ -14,10 +14,12 @@ All actions can be optional and are simply adjusted.
 
 1) Initialize module with:
 
-
++ (void) initWithEnableLoging: (BOOL) enableFlag
+              globalDebugDict: (NSDictionary*) debugDictionary
+                flurrySession: (NSString*) sessionSting
+                 flurryUserID: (NSString*) userString;
 
 2) At each important event, use logSuccess or logError selector with debug information in NSString or NSDictionary 
-
 
 
 <To run the example project, clone the repo, and run `pod install` from the Example directory first.>
