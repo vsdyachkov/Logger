@@ -19,6 +19,12 @@ All actions can be optional and are simply adjusted.
                 flurrySession: (NSString*) sessionSting
                  flurryUserID: (NSString*) userString;
 
+If you don't want any logs in console and flurry, use initWithEnableLoging: NO
+If you only don't want to use flurry, use flurrySession: nil
+If you don't use flurry user identification use flurryUserID: nil
+If you need save any key/values at each time
+
+
 2) At each important event, use logSuccess or logError selector with debug information in NSString or NSDictionary 
 
 
