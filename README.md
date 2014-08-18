@@ -26,7 +26,7 @@ All actions can be optional and are simply adjusted.
 + If you need logging some key/values at each time, use globalDebugDict: your_dictionary
 
 
-2) At each important event use one of function with debug information in NSString or NSDictionary:
+2) At each important event use one of function with (optional) debug information in NSString or NSDictionary:
 
        logSuccessWithTitle: (NSString*) title 
                    message: (NSString*) message 
