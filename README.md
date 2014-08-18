@@ -28,13 +28,28 @@ All actions can be optional and are simply adjusted.
 
 2) At each important event use one of function with debug information in NSString or NSDictionary:
 
-       logSuccessWithTitle: (NSString*) title message:(NSString*) message debugString: (NSString*) hiddenString alert:(BOOL) isAlert;
+       logSuccessWithTitle: (NSString*) title 
+                   message: (NSString*) message 
+               debugString: (NSString*) hiddenString 
+                     alert: (BOOL) isAlert
 
-       logSuccessWithTitle: (NSString*) title message:(NSString*) message debugDict: (NSDictionary*) debugDict alert:(BOOL) isAlert;
 
-       logErrorWithTitle: (NSString*) title message:(NSString*) message debugString: (NSString*) hiddenString alert:(BOOL) isAlert;
+       logSuccessWithTitle: (NSString*) title 
+                   message: (NSString*) message 
+                 debugDict: (NSDictionary*) debugDict 
+                     alert: (BOOL) isAlert
 
-       logErrorWithTitle: (NSString*) title message:(NSString*) message debugDict: (NSDictionary*) debugDict alert:(BOOL) isAlert;
+
+         logErrorWithTitle: (NSString*) title 
+                   message: (NSString*) message 
+               debugString: (NSString*) hiddenString 
+                     alert: (BOOL) isAlert
+
+
+         logErrorWithTitle: (NSString*) title 
+                   message: (NSString*) message 
+                 debugDict: (NSDictionary*) debugDict 
+                     alert: (BOOL) isAlert
 
 
 <To run the example project, clone the repo, and run `pod install` from the Example directory first.>
