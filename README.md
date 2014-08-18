@@ -18,10 +18,9 @@ Init
 
 2) Use logSuccess or logError selector with debug information in NSString or NSDictionary at each important event.
 
-3) Enjoy
 
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+<To run the example project, clone the repo, and run `pod install` from the Example directory first.>
 
 ## Requirements
 
