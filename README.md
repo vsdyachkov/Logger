@@ -7,10 +7,19 @@
 
 This library is created for improvement of your code for work with information on successful and unsuccessful events, and also creation of uniform style of all information messages.
 
-Information output in 3 sources: UIAlertView, console and flurry.
-All actions are adjusted and can be optional
+It will allow you to work at the same time with three tools: UIAlertView, console and flurry, using only one function. 
+All actions can be optional and are simply adjusted.
 
 ## Usage
+
+1) Initialize module with:
+
+Init
+
+2) Use logSuccess or logError selector with debug information in NSString or NSDictionary at each important event.
+
+3) Enjoy
+
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
