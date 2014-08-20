@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/Logger.svg?style=flat)](http://cocoadocs.org/docsets/Logger)
 [![Platform](https://img.shields.io/cocoapods/p/Logger.svg?style=flat)](http://cocoadocs.org/docsets/Logger)
 
-This library is created for simple unified logging of successful and unsuccessful events.
+This library is created for simple unified logging successful and unsuccessful events.
 
 It will allow you to work at the same time with three tools: UIAlertView, console and flurry, using only one function. 
 All actions can be optional and are simply adjusted.
