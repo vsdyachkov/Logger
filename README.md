@@ -24,8 +24,8 @@ Using any of these tools is optional, and can be adjusted
 
 
 + If you don't want any logs in console and flurry, use initWithEnableLoging: NO
-+ If you only don't want to use flurry, use flurrySession: nil
-+ If you don't use flurry user identification use flurryUserID: nil
++ If you don't need flurry user identification use flurryUserID: nil
++ If you only don't need flurry at all, use flurrySession: nil
 + If you need logging some key/values at each time, use globalDebugDict: your_dictionary
 
 
