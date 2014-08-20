@@ -7,8 +7,7 @@
 
 This library is created for simple unified logging successful and unsuccessful events.
 
-It will allow you to work at the same time with three tools: UIAlertView, console and flurry, using only one function. 
-All actions can be optional and are simply adjusted.
+Using any of these tools is optional, and can be adjusted
 
 ## Usage
 
