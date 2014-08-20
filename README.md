@@ -25,11 +25,10 @@ Using any of these tools is optional, and can be adjusted
 
 + If you don't want any logs in console and flurry, use initWithEnableLoging: NO
 + If you don't need flurry user identification use flurryUserID: nil
-+ If you only don't need flurry at all, use flurrySession: nil
++ If you don't need flurry at all, use flurrySession: nil
 + If you need logging some key/values at each time, use globalDebugDict: your_dictionary
 
-
-3) At each important event use one of function with (optional) debug information in NSString or NSDictionary:
+3) For logging event use one of these functions with (optional) debug information in NSString or NSDictionary
 
        logSuccessWithTitle: (NSString*) title 
                    message: (NSString*) message 
