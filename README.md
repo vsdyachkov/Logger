@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/Logger.svg?style=flat)](http://cocoadocs.org/docsets/Logger)
 [![Platform](https://img.shields.io/cocoapods/p/Logger.svg?style=flat)](http://cocoadocs.org/docsets/Logger)
 
-This library is created for improvement of your code for work with information on successful and unsuccessful events, and also creation of uniform style of all information messages.
+This library is created for improvement your code for work with information on successful and unsuccessful events, and also creation uniform style of all information messages.
 
 It will allow you to work at the same time with three tools: UIAlertView, console and flurry, using only one function. 
 All actions can be optional and are simply adjusted.
