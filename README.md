@@ -12,7 +12,11 @@ All actions can be optional and are simply adjusted.
 
 ## Usage
 
-1) Initialize module with:
+1) Add to your <proj>-Prefix.pch file line:
+
+      #import "Logger.h"
+
+2) Initialize module (ex. in AppDelegate) with:
 
       initWithEnableLoging: (BOOL) enableFlag
            globalDebugDict: (NSDictionary*) debugDictionary
@@ -26,7 +30,7 @@ All actions can be optional and are simply adjusted.
 + If you need logging some key/values at each time, use globalDebugDict: your_dictionary
 
 
-2) At each important event use one of function with (optional) debug information in NSString or NSDictionary:
+3) At each important event use one of function with (optional) debug information in NSString or NSDictionary:
 
        logSuccessWithTitle: (NSString*) title 
                    message: (NSString*) message 
@@ -54,6 +58,7 @@ All actions can be optional and are simply adjusted.
 
 ## Requirements
 
+iOS 4+ with ARC
 
 ## Installation
 
