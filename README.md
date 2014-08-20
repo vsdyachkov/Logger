@@ -12,7 +12,7 @@ All actions can be optional and are simply adjusted.
 
 ## Usage
 
-1) Add to your <proj>-Prefix.pch file line:
+1) Add to your proj-Prefix.pch file line:
 
       #import "Logger.h"
 
