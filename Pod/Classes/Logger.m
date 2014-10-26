@@ -21,17 +21,17 @@ static BOOL isInitialized = false;
 static NSString* initErrMsg = @"Please configure this module, call 'initWithEnableLoging...' before use logging";
 
 
-+ (void) initWithEnableLoging: (BOOL) enableFlag
-              globalDebugDict: (NSDictionary*) debugDictionary
-                flurrySession: (NSString*) sessionSting
-                 flurryUserID: (NSString*) userString
++ (void) initWithConsoleReporting:(BOOL) consoleReporting
+                  debugDictionary: (NSDictionary*) debugDictionary
+                     flurryApiKey: (NSString*) flurryApiKey
+                     flurryUserID: (NSString*) flurryUserID
 {
     addParams = debugDictionary;
-    enableLog = (enableFlag) ? enableFlag : false;
+    enableLog = (consoleReporting) ? consoleReporting : false;
     [Flurry setLogLevel:enableLog];
     [Flurry setCrashReportingEnabled:YES];
-    if (sessionSting) [Flurry startSession:sessionSting];
-    if (userString) [Flurry setUserID:userString];
+    if (flurryApiKey) [Flurry startSession:flurryApiKey];
+    if (flurryUserID) [Flurry setUserID:flurryUserID];
     isInitialized = true;
 }
 

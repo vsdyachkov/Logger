@@ -9,10 +9,10 @@
 @interface Logger : NSObject 
 
 
-+ (void) initWithEnableLoging: (BOOL) enableFlag
-              globalDebugDict: (NSDictionary*) debugDictionary
-                flurrySession: (NSString*) sessionSting
-                 flurryUserID: (NSString*) userString;
++ (void) initWithConsoleReporting:(BOOL) consoleReporting
+                  debugDictionary: (NSDictionary*) debugDictionary
+                     flurryApiKey: (NSString*) flurryApiKey
+                     flurryUserID: (NSString*) flurryUserID;
 
 
 + (void) logSuccessWithTitle: (NSString*) title message:(NSString*) message debugString: (NSString*) hiddenString alert:(BOOL) isAlert;
