@@ -17,11 +17,10 @@ Using any of these tools is optional, and can be adjusted
 
 2) Initialize module (ex. in AppDelegate) with:
 
-      initWithEnableLoging: (BOOL) enableFlag
-           globalDebugDict: (NSDictionary*) debugDictionary
-             flurrySession: (NSString*) sessionSting
-              flurryUserID: (NSString*) userString;
-
+  initWithConsoleReporting: (BOOL) consoleReporting
+           debugDictionary: (NSDictionary*) debugDictionary
+              flurryApiKey: (NSString*) flurryApiKey
+              flurryUserID: (NSString*) flurryUserID
 
 + If you don't want any logs in console and flurry, use initWithEnableLoging: NO
 + If you don't need flurry user identification use flurryUserID: nil

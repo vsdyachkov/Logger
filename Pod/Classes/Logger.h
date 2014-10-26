@@ -9,7 +9,7 @@
 @interface Logger : NSObject 
 
 
-+ (void) initWithConsoleReporting:(BOOL) consoleReporting
++ (void) initWithConsoleReporting: (BOOL) consoleReporting
                   debugDictionary: (NSDictionary*) debugDictionary
                      flurryApiKey: (NSString*) flurryApiKey
                      flurryUserID: (NSString*) flurryUserID;

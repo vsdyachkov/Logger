@@ -21,7 +21,7 @@ static BOOL isInitialized = false;
 static NSString* initErrMsg = @"Please configure this module, call 'initWithEnableLoging...' before use logging";
 
 
-+ (void) initWithConsoleReporting:(BOOL) consoleReporting
++ (void) initWithConsoleReporting: (BOOL) consoleReporting
                   debugDictionary: (NSDictionary*) debugDictionary
                      flurryApiKey: (NSString*) flurryApiKey
                      flurryUserID: (NSString*) flurryUserID
