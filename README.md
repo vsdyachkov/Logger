@@ -17,10 +17,10 @@ Using any of these tools is optional, and can be adjusted
 
 2) Initialize module (ex. in AppDelegate) with:
 
-  initWithConsoleReporting: (BOOL) consoleReporting
-           debugDictionary: (NSDictionary*) debugDictionary
-              flurryApiKey: (NSString*) flurryApiKey
-              flurryUserID: (NSString*) flurryUserID
+    initWithConsoleReporting: (BOOL) consoleReporting
+             debugDictionary: (NSDictionary*) debugDictionary
+                flurryApiKey: (NSString*) flurryApiKey
+                flurryUserID: (NSString*) flurryUserID
 
 + If you don't want any logs in console and flurry, use initWithEnableLoging: NO
 + If you don't need flurry user identification use flurryUserID: nil
@@ -29,26 +29,26 @@ Using any of these tools is optional, and can be adjusted
 
 3) For logging event use one of these functions with (optional) debug information in NSString or NSDictionary
 
-       logSuccessWithTitle: (NSString*) title 
-                   message: (NSString*) message 
-               debugString: (NSString*) hiddenString 
-                     alert: (BOOL) isAlert
+         logSuccessWithTitle: (NSString*) title 
+                     message: (NSString*) message 
+                 debugString: (NSString*) hiddenString 
+                       alert: (BOOL) isAlert
 
-       logSuccessWithTitle: (NSString*) title 
-                   message: (NSString*) message 
-                 debugDict: (NSDictionary*) debugDict 
-                     alert: (BOOL) isAlert
+         logSuccessWithTitle: (NSString*) title 
+                     message: (NSString*) message 
+                   debugDict: (NSDictionary*) debugDict 
+                       alert: (BOOL) isAlert
 
 
-         logErrorWithTitle: (NSString*) title 
-                   message: (NSString*) message 
-               debugString: (NSString*) hiddenString 
-                     alert: (BOOL) isAlert
+           logErrorWithTitle: (NSString*) title 
+                     message: (NSString*) message 
+                 debugString: (NSString*) hiddenString 
+                       alert: (BOOL) isAlert
 
-         logErrorWithTitle: (NSString*) title 
-                   message: (NSString*) message 
-                 debugDict: (NSDictionary*) debugDict 
-                     alert: (BOOL) isAlert
+           logErrorWithTitle: (NSString*) title 
+                     message: (NSString*) message 
+                   debugDict: (NSDictionary*) debugDict 
+                       alert: (BOOL) isAlert
 
 
 <To run the example project, clone the repo, and run `pod install` from the Example directory first.>
