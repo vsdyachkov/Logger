@@ -10,6 +10,7 @@
 		6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F5AF195388D20070C39A /* XCTest.framework */; };
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
+		7744E52D1A0671DF004D8C42 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7744E52C1A0671DF004D8C42 /* ViewController.m */; };
 		7786B89C19FCF4EB00A00C39 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 7786B89719FCF4EB00A00C39 /* .gitkeep */; };
 		7786B89D19FCF4EB00A00C39 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 7786B89919FCF4EB00A00C39 /* .gitkeep */; };
 		7786B89E19FCF4EB00A00C39 /* Logger.m in Sources */ = {isa = PBXBuildFile; fileRef = 7786B89B19FCF4EB00A00C39 /* Logger.m */; };
@@ -26,6 +27,8 @@
 		6976E3720AA54629B1A427BE /* Pods-Logger.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Logger.xcconfig"; path = "Pods/Pods-Logger.xcconfig"; sourceTree = "<group>"; };
 		6AA172A2E4044A349D1C4922 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6AD3BF7E1D9F485F9723F480 /* libPods-Logger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Logger.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7744E52B1A0671DF004D8C42 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7744E52C1A0671DF004D8C42 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7786B89719FCF4EB00A00C39 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		7786B89919FCF4EB00A00C39 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		7786B89A19FCF4EB00A00C39 /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
@@ -52,6 +55,7 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
+				7744E52A1A0671B2004D8C42 /* Example */,
 				7786B89519FCF4EB00A00C39 /* Pod */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F58C195388D20070C39A /* Frameworks */,
@@ -89,6 +93,15 @@
 				F79B002648074E36866B0714 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		7744E52A1A0671B2004D8C42 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				7744E52B1A0671DF004D8C42 /* ViewController.h */,
+				7744E52C1A0671DF004D8C42 /* ViewController.m */,
+			);
+			name = Example;
 			sourceTree = "<group>";
 		};
 		7786B89519FCF4EB00A00C39 /* Pod */ = {
@@ -224,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7744E52D1A0671DF004D8C42 /* ViewController.m in Sources */,
 				7786B89E19FCF4EB00A00C39 /* Logger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

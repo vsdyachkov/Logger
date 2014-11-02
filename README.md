@@ -22,10 +22,10 @@ Using any of these tools is optional, and can be adjusted
                 flurryApiKey: (NSString*) flurryApiKey
                 flurryUserID: (NSString*) flurryUserID
 
-+ If you don't want any logs in console and flurry, use initWithEnableLoging: NO
++ If you don't want any logs in console and flurry, use initWithConsoleReporting: NO
++ If you need logging some key/values at each time, use debugDictionary: your_dictionary
++ If you don't need flurry at all, use flurryApiKey: nil
 + If you don't need flurry user identification use flurryUserID: nil
-+ If you don't need flurry at all, use flurrySession: nil
-+ If you need logging some key/values at each time, use globalDebugDict: your_dictionary
 
 3) For logging event use one of these functions with (optional) debug information in NSString or NSDictionary
 
