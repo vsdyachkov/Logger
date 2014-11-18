@@ -119,14 +119,14 @@ static BOOL isInitialized = false;
 
 + (void) log:(eventType)type withTitle:(NSString*)title message:(NSString*)message alert:(BOOL)isAlert debugString:(NSString*)format, ...
 {
-    NSMutableString *formattedString = [NSMutableString string];
     va_list args;
     va_start(args, format);
-    for (NSString *arg = format; arg != nil; arg = va_arg(args, NSString*))
-    {
-        [formattedString appendString:arg];
-    }
+    NSString *msg = [[NSString alloc] initWithFormat:format arguments:args];
     va_end(args);
+    
+    if (isAlert) [self alertWithTitle:title message:message];
+    if (enableLog) [self logConsoleWithType:type title:title message:message debugString:msg debugDict:nil];
+    if (enableLog) [self logFlurryWithType:type title:title message:message debugString:msg debugDict:nil];
     
     if (isAlert) [self alertWithTitle:title message:message];
     if (enableLog) [self logConsole:type title:title message:message debugString:formattedString debugDict:nil];
