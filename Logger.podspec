@@ -9,10 +9,11 @@
 
 Pod::Spec.new do |s|
   s.name             = "Logger"
-  s.version          = "0.1.1"
+  s.version          = "0.1.3"
   s.summary          = "Multiple logger to console, flurry and alert (optional)"
   s.description      = <<-DESC
-                        This pod log messages to console, flurry and alert (optional)
+                        This library is created for simple unified logging successful and unsuccessful events.
+                        Using any of these tools is optional, and can be adjusted
                         DESC
   s.homepage         = "https://github.com/vsdyachkov/Logger"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"

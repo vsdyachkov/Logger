@@ -1,0 +1,20 @@
+PODS:
+  - FlurrySDK (5.2.0):
+    - FlurrySDK/FlurrySDK
+  - FlurrySDK/FlurrySDK (5.2.0)
+  - Logger (0.1.0):
+    - FlurrySDK
+
+DEPENDENCIES:
+  - FlurrySDK
+  - Logger (from `../`)
+
+EXTERNAL SOURCES:
+  Logger:
+    :path: ../
+
+SPEC CHECKSUMS:
+  FlurrySDK: 5322b9eb0d0b538f1a1983a6717f3a2e2ba03047
+  Logger: 944396559b17db3b83e9ab6021dc635951fc7da5
+
+COCOAPODS: 0.33.1
