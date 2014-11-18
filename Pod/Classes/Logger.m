@@ -127,17 +127,13 @@ static BOOL isInitialized = false;
     if (isAlert) [self alertWithTitle:title message:message];
     if (enableLog) [self logConsoleWithType:type title:title message:message debugString:msg debugDict:nil];
     if (enableLog) [self logFlurryWithType:type title:title message:message debugString:msg debugDict:nil];
-    
-    if (isAlert) [self alertWithTitle:title message:message];
-    if (enableLog) [self logConsole:type title:title message:message debugString:formattedString debugDict:nil];
-    if (enableLog) [self logFlurry:type title:title message:message debugString:formattedString debugDict:nil];
 }
 
 + (void) log:(eventType)type withTitle:(NSString*)title message:(NSString*)message alert:(BOOL)isAlert debugDict:(NSDictionary*)debugDict
 {
     if (isAlert) [self alertWithTitle:title message:message];
-    if (enableLog) [self logConsole:type title:title message:message debugString:nil debugDict:debugDict];
-    if (enableLog) [self logFlurry:type title:title message:message debugString:nil debugDict:debugDict];
+    if (enableLog) [self logConsoleWithType:type title:title message:message debugString:nil debugDict:debugDict];
+    if (enableLog) [self logFlurryWithType:type title:title message:message debugString:nil debugDict:debugDict];
 }
 
 + (NSString*) prefixWithEventType:(eventType)type
@@ -155,14 +151,14 @@ static BOOL isInitialized = false;
     [alert show];
 }
 
-+ (void) logConsole:(eventType)type title:(NSString*)title message:(NSString*)message debugString:(NSString*)debugString debugDict:(NSDictionary*)debugDict
++ (void) logConsoleWithType:(eventType)type title:(NSString*)title message:(NSString*)message debugString:(NSString*)debugString debugDict:(NSDictionary*)debugDict
 {
     NSMutableString* logString = [NSString stringWithFormat:@"%@ %@, %@", [self prefixWithEventType:type], title, message].mutableCopy;
     (debugDict) ? [logString appendFormat:@"%@", debugDict] : [logString appendFormat:@"%@", debugString];
     if (enableLog) NSLog(@"%@", logString);
 }
 
-+ (void) logFlurry:(eventType)type title:(NSString*)title message:(NSString*)message debugString:(NSString*)debugString debugDict:(NSDictionary*)debugDict
++ (void) logFlurryWithType:(eventType)type title:(NSString*)title message:(NSString*)message debugString:(NSString*)debugString debugDict:(NSDictionary*)debugDict
 {
     NSMutableDictionary* flurryParameters = [NSMutableDictionary dictionary];
     if ([NSDate date]) [flurryParameters setValue:[NSDate date] forKey:@"ts"];
