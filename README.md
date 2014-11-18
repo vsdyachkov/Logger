@@ -29,17 +29,17 @@ Using any of these tools is optional, and can be adjusted
 
 3) For logging event use one of these functions with (optional) debug information in NSString or NSDictionary
 
-              log:(eventType)type 
-        withTitle:(NSString*)title 
-          message:(NSString*)message 
-            alert:(BOOL)isAlert 
-      debugString:(NSString*)format, ...;
+                         log: (eventType)type 
+                   withTitle: (NSString*)title 
+                     message: (NSString*)message 
+                       alert: (BOOL)isAlert 
+                 debugString: (NSString*)format, ...;
       
-            log:(eventType)type 
-      withTitle:(NSString*)title 
-        message:(NSString*)message 
-          alert:(BOOL)isAlert 
-      debugDict:(NSDictionary*)debugDict;
+                         log: (eventType)type 
+                   withTitle: (NSString*)title 
+                     message: (NSString*)message 
+                       alert: (BOOL)isAlert 
+                   debugDict: (NSDictionary*)debugDict;
 
 <To run the example project, clone the repo, and run `pod install` from the Example directory first.>
 
