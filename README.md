@@ -45,7 +45,7 @@ Using any of these tools is optional, and can be adjusted
 
 ## Requirements
 
-iOS 4+ with ARC (including support iOS 8.1)
+iOS 4+ with ARC (including support iOS 8.1.1)
 
 ## Installation
 
