@@ -153,9 +153,12 @@ static BOOL isInitialized = false;
 
 + (void) logConsoleWithType:(eventType)type title:(NSString*)title message:(NSString*)message debugString:(NSString*)debugString debugDict:(NSDictionary*)debugDict
 {
-    NSMutableString* logString = [NSString stringWithFormat:@"%@ %@, %@", [self prefixWithEventType:type], title, message].mutableCopy;
-    (debugDict) ? [logString appendFormat:@"%@", debugDict] : [logString appendFormat:@"%@", debugString];
-    if (enableLog) NSLog(@"%@", logString);
+    NSMutableString* logString = [NSMutableString stringWithFormat:@"%@ ",[self prefixWithEventType:type]];
+    if (title)      [logString appendFormat:@" %@",title];
+    if (message)    [logString appendFormat:@", %@", message];
+    if (debugDict)  [logString appendFormat:@"%@", debugDict];
+    if (debugString)[logString appendFormat:@"%@", debugString];
+    if (enableLog)  NSLog(@"%@", logString);
 }
 
 + (void) logFlurryWithType:(eventType)type title:(NSString*)title message:(NSString*)message debugString:(NSString*)debugString debugDict:(NSDictionary*)debugDict
