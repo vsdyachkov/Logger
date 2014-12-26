@@ -11,12 +11,7 @@
 #import "Logger.h"
 #import "Flurry.h"
 
-#define errInit         @"Please configure this module, call 'initWithEnableLoging...' before use logging"
-#define errDeprecated   @"This method is deprecated, use:"
-
-#define init_0_1_3      @"initWithConsoleReporting:debugDictionary:flurryApiKey:flurryUserID:"
-#define logString_0_1_3 @"log:withTitle:message:alert:debugString:"
-#define logDict_0_1_3   @"log:withTitle:message:alert:debugDict:"
+#define errInit @"Please configure this module, call 'initWithConsoleReporting...' before use logging"
 
 @implementation Logger
 
@@ -24,92 +19,19 @@ static NSDictionary* addParams = nil;
 
 static BOOL enableLog = false;
 static BOOL isInitialized = false;
-
-# pragma mark - Deprecated methods
-
-+ (void) initWithEnableLoging: (BOOL) enableFlag globalDebugDict: (NSDictionary*) debugDictionary flurrySession: (NSString*) sessionSting flurryUserID: (NSString*) userString
-{
-    addParams = debugDictionary;
-    enableLog = (enableFlag) ? enableFlag : false;
-    [Flurry setLogLevel:enableLog];
-    [Flurry setCrashReportingEnabled:YES];
-    if (sessionSting) [Flurry startSession:sessionSting];
-    if (userString) [Flurry setUserID:userString];
-    isInitialized = true;
-}
-
-+ (void) logSuccessWithTitle: (NSString*) title message:(NSString*) message debugString: (NSString*) debugString alert:(BOOL) isAlert
-{
-    NSAssert(isInitialized, errInit);
-    if (isAlert) [self alertWithTitle:title message:message];
-    [self setTitle:title message:message debugString:debugString debugDict:nil isSuccess:YES];
-}
-
-+ (void) logSuccessWithTitle: (NSString*) title message:(NSString*) message debugDict: (NSDictionary*) debugDict alert:(BOOL) isAlert
-{
-    NSAssert(isInitialized, errInit);
-    if (isAlert) [self alertWithTitle:title message:message];
-    [self setTitle:title message:message debugString:nil debugDict:debugDict isSuccess:YES];
-}
-
-
-+ (void) logErrorWithTitle: (NSString*) title message:(NSString*) message debugString: (NSString*) debugString alert:(BOOL) isAlert
-{
-    NSAssert(isInitialized, errInit);
-    if (isAlert) [self alertWithTitle:title message:message];
-    [self setTitle:title message:message debugString:debugString debugDict:nil isSuccess:NO];
-}
-
-+ (void) logErrorWithTitle: (NSString*) title message:(NSString*) message debugDict: (NSDictionary*) debugDict alert:(BOOL) isAlert
-{
-    NSAssert(isInitialized, errInit);
-    if (isAlert) [self alertWithTitle:title message:message];
-    [self setTitle:title message:message debugString:nil debugDict:debugDict isSuccess:NO];
-}
-
-+ (void) setTitle: (NSString*) title
-          message: (NSString*) message
-      debugString: (NSString*) debugString
-        debugDict: (NSDictionary*) debugDict
-        isSuccess: (BOOL) success
-{
-    if (!enableLog) return;
-    
-    NSString* resultSting = (success) ? @"### Success: " : @"### Error:   ";
-    
-    NSMutableString* logString = [NSMutableString new];
-    if (title) [logString appendString:title];
-    if (message)  [logString appendFormat:@", %@",message];
-    
-    NSString* infoTitle = [NSString stringWithFormat:@"%@%@", resultSting, title];
-    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-    if ([NSDate date]) [parameters setValue:[NSDate date] forKey:@"ts"];
-    if (addParams) [parameters addEntriesFromDictionary:addParams];
-    if (message) [parameters setValue:message forKey:@"message"];
-    
-    if (debugString) {
-        [logString appendFormat:@", %@",debugString];
-        [parameters setValue:debugString forKey:@"hiddenString"];
-    }
-    
-    if (debugDict) {
-        [logString appendFormat:@", %@",debugDict];
-        [parameters addEntriesFromDictionary:debugDict];
-    }
-    
-    NSLog(@"%@%@", resultSting, logString);
-    [Flurry logEvent:infoTitle withParameters:parameters];
-}
+static BOOL logTime = false;
 
 # pragma mark - Modern methods
 
-+ (void) initWithConsoleReporting:(BOOL) consoleReporting
-                  debugDictionary: (NSDictionary*) debugDictionary
-                     flurryApiKey: (NSString*) flurryApiKey
-                     flurryUserID: (NSString*) flurryUserID
++ (void) initWithConsoleReporting:(BOOL)consoleReporting
+               writeTimeInConsole:(BOOL)writeTimeInConsole
+                  debugDictionary:(NSDictionary*)debugDictionary
+                     flurryApiKey:(NSString*)flurryApiKey
+                     flurryUserID:(NSString*)flurryUserID
 {
     addParams = debugDictionary;
     enableLog = (consoleReporting) ? consoleReporting : false;
+    logTime = (writeTimeInConsole) ? writeTimeInConsole : false;
     [Flurry setLogLevel:enableLog];
     [Flurry setCrashReportingEnabled:YES];
     if (flurryApiKey) [Flurry startSession:flurryApiKey];
@@ -119,10 +41,13 @@ static BOOL isInitialized = false;
 
 + (void) log:(eventType)type withTitle:(NSString*)title message:(NSString*)message alert:(BOOL)isAlert debugString:(NSString*)format, ...
 {
-    va_list args;
-    va_start(args, format);
-    NSString *msg = [[NSString alloc] initWithFormat:format arguments:args];
-    va_end(args);
+    NSString *msg;
+    if (format) {
+        va_list args;
+        va_start(args, format);
+        msg = [[NSString alloc] initWithFormat:format arguments:args];
+        va_end(args);
+    }
     
     if (isAlert) [self alertWithTitle:title message:message];
     if (enableLog) [self logConsoleWithType:type title:title message:message debugString:msg debugDict:nil];
@@ -153,12 +78,23 @@ static BOOL isInitialized = false;
 
 + (void) logConsoleWithType:(eventType)type title:(NSString*)title message:(NSString*)message debugString:(NSString*)debugString debugDict:(NSDictionary*)debugDict
 {
-    NSMutableString* logString = [NSMutableString stringWithFormat:@"%@ ",[self prefixWithEventType:type]];
+    NSMutableString* logString = [NSMutableString stringWithFormat:@"%@",[self prefixWithEventType:type]];
     if (title)      [logString appendFormat:@" %@",title];
     if (message)    [logString appendFormat:@", %@", message];
-    if (debugDict)  [logString appendFormat:@"%@", debugDict];
-    if (debugString)[logString appendFormat:@"%@", debugString];
-    if (enableLog)  NSLog(@"%@", logString);
+    if (debugDict)  [logString appendFormat:@", %@", debugDict];
+    if (debugString)[logString appendFormat:@", %@", debugString];
+    if (enableLog)
+    {
+        if (logTime)
+        {
+             NSLog(@"%@", logString);
+        }
+        else
+        {
+            printf("%s\n\n",[logString UTF8String]);
+        }
+    }
+    
 }
 
 + (void) logFlurryWithType:(eventType)type title:(NSString*)title message:(NSString*)message debugString:(NSString*)debugString debugDict:(NSDictionary*)debugDict
@@ -170,7 +106,7 @@ static BOOL isInitialized = false;
     if (debugString) [flurryParameters setValue:debugString forKey:@"debugString"];
     if (debugDict) [flurryParameters addEntriesFromDictionary:debugDict];
     
-    NSString* flurryTitle = [NSString stringWithFormat:@"%@%@", [self prefixWithEventType:type], title];
+    NSString* flurryTitle = [NSString stringWithFormat:@"%@ %@", [self prefixWithEventType:type], title];
     if (enableLog) [Flurry logEvent:flurryTitle withParameters:flurryParameters];
 }
 
