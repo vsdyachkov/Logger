@@ -81,17 +81,29 @@ static BOOL logTime = false;
     NSMutableString* logString = [NSMutableString stringWithFormat:@"%@",[self prefixWithEventType:type]];
     if (title)      [logString appendFormat:@" %@",title];
     if (message)    [logString appendFormat:@", %@", message];
-    if (debugDict)  [logString appendFormat:@", %@", debugDict];
-    if (debugString)[logString appendFormat:@", %@", debugString];
+    if (debugDict)
+    {
+        NSMutableArray* arrayList = [NSMutableArray new];
+        [debugDict.allKeys enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
+         {
+             NSString* key = debugDict.allKeys[idx];
+             NSString* value = [NSString stringWithFormat:@"%@", debugDict.allValues[idx]];
+             key = (key.length > 0) ? key : @"nil";
+             value = (value.length > 0) ? value : @"nil";
+             [arrayList addObject:[NSString stringWithFormat:@"%@: %@", key, value]];
+         }];
+        [logString appendFormat:@"\n%@", [arrayList componentsJoinedByString:@"\n"]];
+    }
+    if (debugString)[logString appendFormat:@"\n%@", debugString];
     if (enableLog)
     {
         if (logTime)
         {
-             NSLog(@"%@", logString);
+            NSLog(@"%@", logString);
         }
         else
         {
-            printf("%s\n\n",[logString UTF8String]);
+            printf("%s\n",[logString UTF8String]);
         }
     }
     
