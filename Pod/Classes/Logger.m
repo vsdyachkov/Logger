@@ -88,7 +88,7 @@ static BOOL logTime = false;
          {
              NSString* key = debugDict.allKeys[idx];
              NSString* value = [NSString stringWithFormat:@"%@", debugDict.allValues[idx]];
-             key = (key.length > 0) ? [NSString stringWithFormat:@"    %@", key] : @"nil";
+             key = (key.length > 0) ? [NSString stringWithFormat:@"    %@", key] : @"    nil";
              value = (value.length > 0) ? value : @"nil";
              [arrayList addObject:[NSString stringWithFormat:@"%@: %@", key, value]];
          }];
