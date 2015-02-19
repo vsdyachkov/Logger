@@ -17,10 +17,11 @@ Using any of these tools is optional, and can be adjusted
 
 2) Initialize module (ex. in AppDelegate) with:
 
-    initWithConsoleReporting: (BOOL) consoleReporting
-             debugDictionary: (NSDictionary*) debugDictionary
-                flurryApiKey: (NSString*) flurryApiKey
-                flurryUserID: (NSString*) flurryUserID
+    initWithConsoleReporting: (BOOL)consoleReporting
+          writeTimeInConsole: (BOOL)writeTimeInConsole
+             debugDictionary: (NSDictionary*)debugDictionary
+                flurryApiKey: (NSString*)flurryApiKey
+                flurryUserID: (NSString*)flurryUserID
 
 + If you don't want any logs in console and flurry, use initWithConsoleReporting: NO
 + If you need logging some key/values at each time, use debugDictionary: your_dictionary
@@ -28,6 +29,9 @@ Using any of these tools is optional, and can be adjusted
 + If you don't need flurry user identification use flurryUserID: nil
 
 3) For logging event use one of these functions with (optional) debug information in NSString or NSDictionary
+
+                         log: (eventType)type withDebugString: (NSString*)format, ...;
+                         log: (eventType)type withDebugDict: (NSDictionary*)debugDict;
 
                          log: (eventType)type 
                    withTitle: (NSString*)title 
