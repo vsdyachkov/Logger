@@ -42,6 +42,8 @@ static BOOL logTime = false;
 
 + (void) log:(eventType)type withDebugString:(NSString*)format, ...
 {
+    NSAssert(isInitialized, errInit);
+    
     NSString *msg;
     if (format) {
         va_list args;
@@ -57,6 +59,8 @@ static BOOL logTime = false;
 
 + (void) log:(eventType)type withDebugDict:(NSDictionary*)debugDict
 {
+    NSAssert(isInitialized, errInit);
+    
     NSString* title = [self senderClassMethod];
     if (enableLog) [self logConsoleWithType:type title:title message:nil debugString:nil debugDict:debugDict];
     if (enableLog) [self logFlurryWithType:type title:title message:nil debugString:nil debugDict:debugDict];
@@ -64,6 +68,8 @@ static BOOL logTime = false;
 
 + (void) log:(eventType)type withAlert:(NSString*)title message:(NSString*)message debugString:(NSString*)format, ...
 {
+    NSAssert(isInitialized, errInit);
+    
     NSString *msg;
     if (format) {
         va_list args;
@@ -79,6 +85,8 @@ static BOOL logTime = false;
 
 + (void) log:(eventType)type withAlert:(NSString*)title message:(NSString*)message debugDict:(NSDictionary*)debugDict
 {
+    NSAssert(isInitialized, errInit);
+    
     [self alertWithTitle:title message:message];
     if (enableLog) [self logConsoleWithType:type title:title message:message debugString:nil debugDict:debugDict];
     if (enableLog) [self logFlurryWithType:type title:title message:message debugString:nil debugDict:debugDict];

@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Logger"
-  s.version          = "0.2.6"
+  s.version          = "0.2.7"
   s.summary          = "Multiple logger to console, flurry and alert (optional)"
   s.description      = <<-DESC
                         This library is created for simple unified logging successful and unsuccessful events.
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Victor" => "vsdyachkov@rambler.ru" }
-  s.source           = { :git => "https://github.com/vsdyachkov/Logger.git", :commit => "9aa225a8859988fe2041ba35d1e7c2e97eeadc52", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/vsdyachkov/Logger.git", :commit => "ff49fb6eb77e964fc7d768a4b86f2751d4aadda9", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '6.0'
