@@ -24,7 +24,7 @@ typedef enum {
 + (void) log:(eventType)type withDebugString:(NSString*)format, ...;
 + (void) log:(eventType)type withDebugDict:(NSDictionary*)debugDict;
 
-+ (void) log:(eventType)type withAlert:(NSString*)title message:(NSString*)message debugString:(NSString*)format, ...
-+ (void) log:(eventType)type withAlert:(NSString*)title message:(NSString*)message debugDict:(NSDictionary*)debugDict
++ (void) log:(eventType)type withAlert:(NSString*)title message:(NSString*)message debugString:(NSString*)format, ...;
++ (void) log:(eventType)type withAlert:(NSString*)title message:(NSString*)message debugDict:(NSDictionary*)debugDict;
 
 @end
