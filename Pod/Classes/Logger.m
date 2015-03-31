@@ -40,30 +40,10 @@ static BOOL logTime = false;
     isInitialized = true;
 }
 
-+ (void) log:(eventType)type withTitle:(NSString*)title message:(NSString*)message alert:(BOOL)isAlert debugString:(NSString*)format, ...
-{
-    NSString *msg;
-    if (format) {
-        va_list args;
-        va_start(args, format);
-        msg = [[NSString alloc] initWithFormat:format arguments:args];
-        va_end(args);
-    }
-    
-    if (isAlert) [self alertWithTitle:title message:message];
-    if (enableLog) [self logConsoleWithType:type title:title message:message debugString:msg debugDict:nil];
-    if (enableLog) [self logFlurryWithType:type title:title message:message debugString:msg debugDict:nil];
-}
-
-+ (void) log:(eventType)type withTitle:(NSString*)title message:(NSString*)message alert:(BOOL)isAlert debugDict:(NSDictionary*)debugDict
-{
-    if (isAlert) [self alertWithTitle:title message:message];
-    if (enableLog) [self logConsoleWithType:type title:title message:message debugString:nil debugDict:debugDict];
-    if (enableLog) [self logFlurryWithType:type title:title message:message debugString:nil debugDict:debugDict];
-}
-
 + (void) log:(eventType)type withDebugString:(NSString*)format, ...
 {
+    NSAssert(isInitialized, errInit);
+    
     NSString *msg;
     if (format) {
         va_list args;
@@ -79,9 +59,37 @@ static BOOL logTime = false;
 
 + (void) log:(eventType)type withDebugDict:(NSDictionary*)debugDict
 {
+    NSAssert(isInitialized, errInit);
+    
     NSString* title = [self senderClassMethod];
     if (enableLog) [self logConsoleWithType:type title:title message:nil debugString:nil debugDict:debugDict];
     if (enableLog) [self logFlurryWithType:type title:title message:nil debugString:nil debugDict:debugDict];
+}
+
++ (void) log:(eventType)type withAlert:(NSString*)title message:(NSString*)message debugString:(NSString*)format, ...
+{
+    NSAssert(isInitialized, errInit);
+    
+    NSString *msg;
+    if (format) {
+        va_list args;
+        va_start(args, format);
+        msg = [[NSString alloc] initWithFormat:format arguments:args];
+        va_end(args);
+    }
+    
+    [self alertWithTitle:title message:message];
+    if (enableLog) [self logConsoleWithType:type title:title message:message debugString:msg debugDict:nil];
+    if (enableLog) [self logFlurryWithType:type title:title message:message debugString:msg debugDict:nil];
+}
+
++ (void) log:(eventType)type withAlert:(NSString*)title message:(NSString*)message debugDict:(NSDictionary*)debugDict
+{
+    NSAssert(isInitialized, errInit);
+    
+    [self alertWithTitle:title message:message];
+    if (enableLog) [self logConsoleWithType:type title:title message:message debugString:nil debugDict:debugDict];
+    if (enableLog) [self logFlurryWithType:type title:title message:message debugString:nil debugDict:debugDict];
 }
 
 # pragma mark - Support methods

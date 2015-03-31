@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Victor" => "vsdyachkov@rambler.ru" }
-  s.source           = { :git => "https://github.com/vsdyachkov/Logger.git", :commit => "28c42b8dc685129f0538a457fa4905071a02e0e8", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/vsdyachkov/Logger.git", :commit => "ff49fb6eb77e964fc7d768a4b86f2751d4aadda9", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '6.0'
