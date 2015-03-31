@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Logger"
-  s.version          = "0.2.4"
+  s.version          = "0.2.7"
   s.summary          = "Multiple logger to console, flurry and alert (optional)"
   s.description      = <<-DESC
                         This library is created for simple unified logging successful and unsuccessful events.

@@ -21,8 +21,8 @@ typedef enum {
                      flurryApiKey:(NSString*)flurryApiKey
                      flurryUserID:(NSString*)flurryUserID;
 
-+ (void) log:(eventType)type withDebugString:(NSString*)format, ...;
-+ (void) log:(eventType)type withDebugDict:(NSDictionary*)debugDict;
++ (void) log:(eventType)type title:(NSString*)title withDebugString:(NSString*)format, ...;
++ (void) log:(eventType)type title:(NSString*)title withDebugDict:(NSDictionary*)debugDict;
 
 + (void) log:(eventType)type withAlert:(NSString*)title message:(NSString*)message debugString:(NSString*)format, ...;
 + (void) log:(eventType)type withAlert:(NSString*)title message:(NSString*)message debugDict:(NSDictionary*)debugDict;

@@ -5,7 +5,6 @@
 //  Copyright (c) 2014 Nestline. All rights reserved.
 //
 
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "Logger.h"
@@ -40,7 +39,7 @@ static BOOL logTime = false;
     isInitialized = true;
 }
 
-+ (void) log:(eventType)type withDebugString:(NSString*)format, ...
++ (void) log:(eventType)type title:(NSString*)title withDebugString:(NSString*)format, ...
 {
     NSAssert(isInitialized, errInit);
     
@@ -52,16 +51,14 @@ static BOOL logTime = false;
         va_end(args);
     }
     
-    NSString* title = [self senderClassMethod];
     if (enableLog) [self logConsoleWithType:type title:title message:nil debugString:msg debugDict:nil];
     if (enableLog) [self logFlurryWithType:type title:title message:nil debugString:msg debugDict:nil];
 }
 
-+ (void) log:(eventType)type withDebugDict:(NSDictionary*)debugDict
++ (void) log:(eventType)type title:(NSString*)title withDebugDict:(NSDictionary*)debugDict
 {
     NSAssert(isInitialized, errInit);
     
-    NSString* title = [self senderClassMethod];
     if (enableLog) [self logConsoleWithType:type title:title message:nil debugString:nil debugDict:debugDict];
     if (enableLog) [self logFlurryWithType:type title:title message:nil debugString:nil debugDict:debugDict];
 }
@@ -92,31 +89,8 @@ static BOOL logTime = false;
     if (enableLog) [self logFlurryWithType:type title:title message:message debugString:nil debugDict:debugDict];
 }
 
-# pragma mark - Support methods
 
-+ (NSString*) senderClassMethod
-{
-    __block NSString* senderClassMethod = @"Unknown sender";
-    NSString* selfClassName = NSStringFromClass([self class]);
-    NSCharacterSet *separatorSet = [NSCharacterSet characterSetWithCharactersInString:@"[]"];
-    [[NSThread callStackSymbols] enumerateObjectsUsingBlock:^(NSString* sourceString, NSUInteger idx, BOOL *stop)
-     {
-         NSMutableArray *array = [NSMutableArray arrayWithArray:[sourceString componentsSeparatedByCharactersInSet:separatorSet]];
-         NSArray* classMethodArray;
-         if (array.count > 0) classMethodArray = [array[1] componentsSeparatedByString: @" "];
-         if (classMethodArray.count > 0)
-         {
-             NSString* classCaller = classMethodArray[0];
-             NSString* methodCaller = classMethodArray[1];
-             BOOL isCallerClass = ![classCaller isEqualToString:selfClassName];
-             if (isCallerClass) {
-                 senderClassMethod = [NSString stringWithFormat:@"[%@ %@]", classCaller, methodCaller];
-                 *stop = YES;
-             }
-         }
-     }];
-    return senderClassMethod;
-}
+# pragma mark - Support methods
 
 + (NSString*) iconWithType:(eventType)type
 {
@@ -175,7 +149,11 @@ static BOOL logTime = false;
         }
         else
         {
+#ifdef DEBUG
             printf("%s\n",[logString UTF8String]);
+#else
+            NSLog(@"%@", logString);
+#endif
         }
     }
     
@@ -183,10 +161,7 @@ static BOOL logTime = false;
 
 + (void) logFlurryWithType:(eventType)type title:(NSString*)title message:(NSString*)message debugString:(NSString*)debugString debugDict:(NSDictionary*)debugDict
 {
-    NSString* method = [self senderClassMethod];
-    
     NSMutableDictionary* flurryParameters = [NSMutableDictionary dictionary];
-    if (method) [flurryParameters setValue:method forKey:@"method"];
     if ([NSDate date]) [flurryParameters setValue:[NSString stringWithFormat:@"%@",[NSDate date]] forKey:@"date"];
     if (addParams) [flurryParameters addEntriesFromDictionary:addParams];
     if (message) [flurryParameters setValue:message forKey:@"message"];
